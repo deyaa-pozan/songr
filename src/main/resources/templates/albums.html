@@ -3,18 +3,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:href="@{../static/style.css}" rel="stylesheet" />
+    <title>albums</title>
+    <link th:href="@{style.css}" rel="stylesheet" />
 </head>
 <body>
 <h1>Albums:</h1>
-<div th:each="album : ${albums}" style="text-align: center;">
+<div th:each="album : ${albums}" >
     <p>Title: <span th:text=${album.title}></span></p>
     <p>Artist: <span th:text="${album.artist}"></span></p>
     <p>Song Count: <span th:text="${album.songCount}"></span></p>
     <p>Length: <span th:text="${album.length}"></span></p>
-    <!--    <p>Image url: <span th:text="${album.imageUrl}"></span></p>-->
     <img th:src=@{${album.imageUrl}} width="500" height="600">
+    <hr>
+    <hr>
     <hr>
 </div>
 </body>

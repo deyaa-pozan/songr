@@ -9,16 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class CapitalizerController {
 
     @GetMapping("/capitalize/{sentence}")
-    public String capitalize(Model m,@PathVariable String sentence){
+    public String capitalize(Model model,@PathVariable String sentence){
         String capitalized = sentence.toUpperCase();
-        m.addAttribute("sentence",capitalized);
+        model.addAttribute("sentence",capitalized);
 
         return "capitalize";
     }
 
-    @GetMapping("/hello")
-    public String helloWorld(){
-        return "hello.html";
-    }
 
 }
