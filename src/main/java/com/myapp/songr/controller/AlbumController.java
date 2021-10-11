@@ -26,21 +26,22 @@ public class AlbumController {
         m.addAttribute("albums",albums);
         return "albums";
     }
-    @GetMapping("/addAlbum")
-    public String viewAddAlbumForm(){
-        return "addAlbum";
-    }
     @PostMapping("/addAlbum")
-    public RedirectView addAlbumToDB(Model m,
-                                     @RequestParam(value="title") String title,
-                                     @RequestParam(value="artist") String artist,
-                                     @RequestParam(value="songCount") int songCount,
-                                     @RequestParam(value="length") int length,
-                                     @RequestParam(value="imageUrl") String imageUrl){
+    public RedirectView addAlbum(Model model,
+                                 @RequestParam(value="title") String title,
+                                 @RequestParam(value="artist") String artist,
+                                 @RequestParam(value="songCount") int songCount,
+                                 @RequestParam(value="length") int length,
+                                 @RequestParam(value="imageUrl") String imageUrl){
         Album album = new Album(title,artist,songCount,length,imageUrl);
         albumRepository.save(album);
         return new RedirectView("/albums");
     }
+    @GetMapping("/addAlbum")
+    public String formAdd(){
+        return "addAlbum";
+    }
+
 
 }
 
