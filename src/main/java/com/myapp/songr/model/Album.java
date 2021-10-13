@@ -1,20 +1,29 @@
 package com.myapp.songr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Type;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+// Store in the db
 @Entity
 public class Album {
+    // Add Id and GeneratedValue annotations
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private long id;
-    private String title;
-    private String artist;
-    private int songCount;
-    private int length;
-    private String imageUrl;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    String title;
+    String artist;
+    int songCount;
+    int length;
+    String imageUrl;
+    @OneToMany(mappedBy = "album")
+    List<Song> songsInThisAlbum;
+    // JPA and Hibernate NEED Default constructor
+    protected Album(){
+    }
 
     public Album(String title, String artist, int songCount, int length, String imageUrl) {
         this.title = title;
@@ -23,62 +32,32 @@ public class Album {
         this.length = length;
         this.imageUrl = imageUrl;
     }
-    public Album(){
 
+    public String getArtist(){
+        return this.artist;
+    }
+    public String getTitle(){
+        return this.title;
+    }
+    public int getSongCount(){
+        return this.songCount;
+    }
+    public int getlength(){
+        return this.length;
+    }
+    public String imageUrl(){
+        return this.imageUrl;
+    }
+    public void setImageUrl(String path)
+    {
+        this.imageUrl = path;
     }
 
-    public String getTitle() {
-        return title;
+    public List<Song> getSongsInThisAlbum() {
+        return songsInThisAlbum;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public void setSongCount(int songCount) {
-        this.songCount = songCount;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public int getSongCount() {
-        return songCount;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "Album{" +
-                "title='" + title + '\'' +
-                ", artist='" + artist + '\'' +
-                ", songCount=" + songCount +
-                ", length=" + length +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
+    public void setSongsInThisAlbum(List<Song> songsInThisAlbum) {
+        this.songsInThisAlbum = songsInThisAlbum;
     }
 }
