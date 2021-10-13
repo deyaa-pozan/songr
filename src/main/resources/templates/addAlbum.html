@@ -13,13 +13,21 @@
 <h2>Add A New Album</h2>
 
 <div>
-    <form action="/addAlbum" method="POST">
-        <label for="title">Title:  <input type="text" name="title" id="title"> </label><br>
-        <label for="artist">Artist:  <input type="text" name="artist" id="artist"> </label><br>
-        <label for="songCount">Song Count:  <input type="number" name="songCount" id="songCount"> </label><br>
-        <label for="length">Length:  <input type="number" name="length" id="length"> </label><br>
-        <label for="imageUrl">Image URL: <input type="text" name="imageUrl" id="imageUrl"> </label><br>
-        <input type="submit" value="Add Album">
+    <form action="/" method="POST">
+        <fieldset>
+            <legend>Add Album</legend>
+            <label for="artist"> Artist Name:</label>
+            <input type="text" name="artist">
+            <label for="title"> Album Title:</label>
+            <input type="text" name="title">
+            <label for="songCount"> Song Count:</label>
+            <input type="text" name="songCount">
+            <label for="length"> Album Length in Seconds:</label>
+            <input type="text" name="length">
+            <label for="imageURL"> Image Url:</label>
+            <input type="text" name="imageURL">
+            <input type="submit" value="Add">
+        </fieldset>
     </form>
 </div>
 </body>

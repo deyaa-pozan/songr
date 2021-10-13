@@ -1,13 +1,10 @@
 package com.myapp.songr.repository;
 
 
-
-
-import com.myapp.songr.model.Album;
+import com.myapp.songr.model.Song;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AlbumRepository extends JpaRepository<Album, Long> {
-    public Album findByTitle(String album);
+public interface SongRepository extends JpaRepository<Song, Long> {
 }
