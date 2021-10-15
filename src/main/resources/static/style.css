@@ -49,3 +49,15 @@ div {
   background-color: #f2f2f2;
   padding: 20px;
 }
+
+ul {
+  background: #4CAF50;
+  padding: 20px;
+}
+
+ul li {
+  list-style-type: none;
+  background: #00FA9A;
+
+  margin: 5px;
+}
